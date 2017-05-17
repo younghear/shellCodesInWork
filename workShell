@@ -1,0 +1,2 @@
+1、 find all class name with name conflict in current directory 
+grep "class .\+" imp/ -r --color|sed 's/extends//g' | cut -d ":" -f 2|grep [\(,\/,\*,\;,$] -v |sed 's/final class/class/g'|sed 's/abstract[[:space:]]\+class/class/g' |sed 's/^[[:space:]]*//g' |grep "^class" |cut -f 2 -d " "|awk '{a[$1]++}END{for (j in a) print a[j],j}'| grep ^[2-9] --color
